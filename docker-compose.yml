@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  pgsql:
+    image: postgres:latest
+    ports:
+      - '54321:5432'
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: "rabbitmq:latest"
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: dev
+      RABBITMQ_DEFAULT_PASS: dev
+
+volumes:
+  pg_data:
